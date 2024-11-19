@@ -4,6 +4,9 @@ project(floyd_warshall_parallel VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add src directory to include paths
+include_directories(${PROJECT_SOURCE_DIR}/src)
+
 # macOS specific OpenMP configuration
 if(APPLE)
     if(CMAKE_C_COMPILER_ID MATCHES "Clang")
@@ -20,11 +23,9 @@ if(APPLE)
     endif()
 endif()
 
-# Find required packages
 find_package(OpenMP)
 find_package(MPI)
 
-# Configure source files for common library
 set(COMMON_SOURCES
         src/common/graph.cpp
         src/common/utils.cpp
@@ -32,6 +33,7 @@ set(COMMON_SOURCES
 
 # Create common library
 add_library(common_lib ${COMMON_SOURCES})
+target_include_directories(common_lib PUBLIC ${PROJECT_SOURCE_DIR}/src)
 
 # Serial implementation
 add_executable(floyd_warshall_serial src/serial/floyd_warshall_serial.cpp)

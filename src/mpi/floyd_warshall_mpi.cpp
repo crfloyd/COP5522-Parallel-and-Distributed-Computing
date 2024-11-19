@@ -1,5 +1,5 @@
-#include "../common/graph.hpp"
-#include "../common/utils.hpp"
+#include "common/graph.hpp"
+#include "common/utils.hpp"
 #include <mpi.h>
 
 int main(int argc, char* argv[]) {
