@@ -1,0 +1,45 @@
+# CLion specific
+.idea/
+cmake-build-*/
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.out
+*.app
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Performance testing results
+data/results/*
+!data/results/.gitkeep
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
