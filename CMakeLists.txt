@@ -7,6 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Add src directory to include paths
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
+# Include FetchContent for downloading GoogleTest
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG release-1.12.1
+)
+FetchContent_MakeAvailable(googletest)
+
 # macOS specific OpenMP configuration
 if(APPLE)
     if(CMAKE_C_COMPILER_ID MATCHES "Clang")
@@ -50,3 +59,13 @@ if(MPI_CXX_FOUND)
     add_executable(floyd_warshall_mpi src/mpi/floyd_warshall_mpi.cpp)
     target_link_libraries(floyd_warshall_mpi common_lib MPI::MPI_CXX)
 endif()
+
+# Enable testing
+enable_testing()
+add_executable(graph_tests tests/graph_tests.cpp)
+target_link_libraries(graph_tests
+        common_lib
+        GTest::gtest_main
+)
+include(GoogleTest)
+gtest_discover_tests(graph_tests)

@@ -45,4 +45,4 @@ ctest
 
 ## License
 
-[Your chosen license]
+MIT
