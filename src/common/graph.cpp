@@ -2,26 +2,24 @@
 #include <random>
 #include <iomanip>
 
-Graph::Graph(const size_t vertices) : numVertices(vertices) {
+Graph::Graph(size_t vertices) : numVertices(vertices) {
     if (vertices == 0) {
         throw std::invalid_argument("Graph must have at least one vertex");
     }
-
-    // Initialize matrix with INF, diagonals with 0
     adjacencyMatrix.resize(vertices, std::vector<int>(vertices, INF));
     for (size_t i = 0; i < vertices; ++i) {
         adjacencyMatrix[i][i] = 0;
     }
 }
 
-void Graph::setEdge(const size_t src, const size_t dest, const int weight) {
+void Graph::setEdge(size_t src, size_t dest, int weight) {
     if (src >= numVertices || dest >= numVertices) {
         throw std::out_of_range("Vertex index out of range");
     }
     adjacencyMatrix[src][dest] = weight;
 }
 
-int Graph::getEdge(const size_t src, const size_t dest) const {
+int Graph::getEdge(size_t src, size_t dest) const {
     if (src >= numVertices || dest >= numVertices) {
         throw std::out_of_range("Vertex index out of range");
     }
@@ -42,7 +40,7 @@ void Graph::print() const {
     }
 }
 
-Graph Graph::generateRandom(const size_t vertices, const double density, const int minWeight, const int maxWeight) {
+Graph Graph::generateRandom(size_t vertices, double density, int minWeight, int maxWeight) {
     if (density < 0.0 || density > 1.0) {
         throw std::invalid_argument("Density must be between 0 and 1");
     }

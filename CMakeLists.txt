@@ -69,3 +69,27 @@ target_link_libraries(graph_tests
 )
 include(GoogleTest)
 gtest_discover_tests(graph_tests)
+
+add_library(floyd_warshall_lib
+        src/serial/floyd_warshall_serial.cpp
+        src/openmp/floyd_warshall_openmp.cpp
+        src/mpi/floyd_warshall_mpi.cpp
+)
+target_link_libraries(floyd_warshall_lib
+        OpenMP::OpenMP_CXX
+        MPI::MPI_CXX
+)
+set_target_properties(floyd_warshall_lib PROPERTIES
+        EXCLUDE_FROM_ALL TRUE
+        EXCLUDE_FROM_DEFAULT_BUILD TRUE
+)
+target_compile_definitions(floyd_warshall_lib PRIVATE TESTING=1)
+
+add_executable(floyd_warshall_tests tests/floyd_warshall_tests.cpp)
+target_link_libraries(floyd_warshall_tests
+        common_lib
+        floyd_warshall_lib
+        GTest::gtest_main
+        MPI::MPI_CXX
+)
+gtest_discover_tests(floyd_warshall_tests)
