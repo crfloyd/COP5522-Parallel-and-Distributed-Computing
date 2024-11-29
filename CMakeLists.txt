@@ -93,3 +93,12 @@ target_link_libraries(floyd_warshall_tests
         MPI::MPI_CXX
 )
 gtest_discover_tests(floyd_warshall_tests)
+
+# Performance testing executable
+add_executable(performance_tests src/performance_tests.cpp)
+target_link_libraries(performance_tests
+        common_lib
+        floyd_warshall_lib
+        OpenMP::OpenMP_CXX
+        MPI::MPI_CXX
+)

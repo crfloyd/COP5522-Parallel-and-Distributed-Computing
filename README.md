@@ -14,9 +14,12 @@ floyd-warshall-parallel/
 ├── tests/                 # Unit tests for project components
 ├── data/                  # Data directory for input and results
 │   ├── input/             # Test graph input files
-│   └── results/           # Performance testing results
+│── └── results/           # Performance testing results
+│      └── plots/          # images of plots created by the generate_plots.py file 
+│      performance_results.csv # data collected by the performance_tests.cpp file
 ├── docs/                  # Project documentation
 └── scripts/               # Performance testing and analysis scripts
+└── performance_tests.cpp  # Performance testing and results gathering
 ```
 
 ## Prerequisites

@@ -25,6 +25,7 @@ Graph floydWarshall(const Graph& graph) {
     return result;
 }
 
+#ifndef TESTING
 int main(int argc, char* argv[]) {
     try {
         // Create a test graph
@@ -59,3 +60,4 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+#endif

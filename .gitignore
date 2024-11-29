@@ -32,9 +32,14 @@ data/results/*
 !data/results/.gitkeep
 
 # Python virtual environment
+.venv/
 venv/
+ENV/
+
+# Python cache files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 
 # Editor temporary files
 *.swp
